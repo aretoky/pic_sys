@@ -558,8 +558,6 @@ class _MyHomePageState extends State<MyHomePage> {
           OutlinedButton(
             style: OutlinedButton.styleFrom(minimumSize: Size(200, 50)),
             onPressed: () {
-//                         child:
-//                       (() {
               disp_pics = [];
               switch (word_level) {
                 case Answer_level.level1:
@@ -597,7 +595,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                   break;
               }
-
+              disp_pics.shuffle();
               switch (card_number) {
                 case Answer_card.one:
                   Navigator.push(
@@ -663,7 +661,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
               }
-//          })();
             },
             child: const Text(
               'カード表示',
