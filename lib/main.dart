@@ -37,17 +37,142 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-enum Answer_1 { level1, level2, level3, level4 }
+enum Answer_level { level1, level2 }
 
-enum Answer_2 { one, two, three, four, five, six, eight, nine, ten }
+enum Answer_card { one, two, three, four, five, six, eight, nine, ten }
+
+var pic_animal_level1 = [
+  'images/animal1_1.png',
+  'images/animal1_2.png',
+  'images/animal1_3.png',
+  'images/animal1_4.png',
+  'images/animal1_5.png',
+  'images/animal1_6.png',
+  'images/animal1_7.png',
+  'images/animal1_8.png',
+  'images/animal1_9.png',
+  'images/animal1_10.png',
+];
+var pic_etc_level1 = [
+  'images/etc1_1.png',
+  'images/etc1_2.png',
+  'images/etc1_3.png',
+  'images/etc1_4.png',
+  'images/etc1_5.png',
+  'images/etc1_6.png',
+  'images/etc1_7.png',
+  'images/etc1_8.png',
+  'images/etc1_9.png',
+  'images/etc1_10.png',
+];
+var pic_food_level1 = [
+  'images/food1_1.png',
+  'images/food1_2.png',
+  'images/food1_3.png',
+  'images/food1_4.png',
+  'images/food1_5.png',
+  'images/food1_6.png',
+  'images/food1_7.png',
+  'images/food1_8.png',
+  'images/food1_9.png',
+  'images/food1_10.png',
+];
+var pic_hito_level1 = [
+  'images/hito1_1.png',
+  'images/hito1_2.png',
+  'images/hito1_3.png',
+  'images/hito1_4.png',
+  'images/hito1_5.png',
+  'images/hito1_6.png',
+  'images/hito1_7.png',
+  'images/hito1_8.png',
+  'images/hito1_9.png',
+  'images/hito1_10.png',
+];
+var pic_norimono_level1 = [
+  'images/norimono1_1.png',
+  'images/norimono1_2.png',
+  'images/norimono1_3.png',
+  'images/norimono1_4.png',
+  'images/norimono1_5.png',
+  'images/norimono1_6.png',
+  'images/norimono1_7.png',
+  'images/norimono1_8.png',
+  'images/norimono1_9.png',
+  'images/norimono1_10.png',
+];
+var pic_animal_level2 = [
+  'images/animal2_1.png',
+  'images/animal2_2.png',
+  'images/animal2_3.png',
+  'images/animal2_4.png',
+  'images/animal2_5.png',
+  'images/animal2_6.png',
+  'images/animal2_7.png',
+  'images/animal2_8.png',
+  'images/animal2_9.png',
+  'images/animal2_10.png',
+];
+var pic_etc_level2 = [
+  'images/etc2_1.png',
+  'images/etc2_2.png',
+  'images/etc2_3.png',
+  'images/etc2_4.png',
+  'images/etc2_5.png',
+  'images/etc2_6.png',
+  'images/etc2_7.png',
+  'images/etc2_8.png',
+  'images/etc2_9.png',
+  'images/etc2_10.png',
+];
+var pic_food_level2 = [
+  'images/food2_1.png',
+  'images/food2_2.png',
+  'images/food2_3.png',
+  'images/food2_4.png',
+  'images/food2_5.png',
+  'images/food2_6.png',
+  'images/food2_7.png',
+  'images/food2_8.png',
+  'images/food2_9.png',
+  'images/food2_10.png',
+];
+var pic_hito_level2 = [
+  'images/hito2_1.png',
+  'images/hito2_2.png',
+  'images/hito2_3.png',
+  'images/hito2_4.png',
+  'images/hito2_5.png',
+  'images/hito2_6.png',
+  'images/hito2_7.png',
+  'images/hito2_8.png',
+  'images/hito2_9.png',
+  'images/hito2_10.png',
+];
+var pic_norimono_level2 = [
+  'images/norimono2_1.png',
+  'images/norimono2_2.png',
+  'images/norimono2_3.png',
+  'images/norimono2_4.png',
+  'images/norimono2_5.png',
+  'images/norimono2_6.png',
+  'images/norimono2_7.png',
+  'images/norimono2_8.png',
+  'images/norimono2_9.png',
+  'images/norimono2_10.png',
+];
+
+var disp_pics = [];
 
 class _MyHomePageState extends State<MyHomePage> {
-  Map<int, Answer_1?> answerVal_1 = {};
-  Map<int, Answer_2?> answerVal_2 = {};
+  var word_level;
+  var card_number;
 
-  bool isChecked = false;
-  int index = 0;
-  var _isChecked = List.filled(20, false);
+  var _isCheck_food = true;
+  var _isCheck_animal = true;
+  var _isCheck_norimono = true;
+  var _isCheck_hito = true;
+  var _isCheck_etc = true;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
       /* ここに戻る */
       body: Column(
         children: <Widget>[
+          Text(''),
           Text(''),
           Text(''),
           Text(''),
@@ -73,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 Expanded(
-                  child: RadioListTile<Answer_1>(
+                  child: RadioListTile<Answer_level>(
                     title: const Text(
                       '語彙レベル１',
                       style: TextStyle(
@@ -82,17 +208,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_1.level1,
-                    groupValue: answerVal_1[index],
-                    onChanged: (Answer_1? value) {
+                    value: Answer_level.level1,
+                    groupValue: word_level,
+                    onChanged: (Answer_level? value) {
                       setState(() {
-                        answerVal_1[index] = value;
+                        word_level = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_1>(
+                  child: RadioListTile<Answer_level>(
                     title: const Text(
                       '語彙レベル２',
                       style: TextStyle(
@@ -101,40 +227,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_1.level2,
-                    groupValue: answerVal_1[index],
-                    onChanged: (Answer_1? value) {
+                    value: Answer_level.level2,
+                    groupValue: word_level,
+                    onChanged: (Answer_level? value) {
                       setState(() {
-                        answerVal_1[index] = value;
+                        word_level = value;
                       });
                     },
                   ),
                 ),
-/*                Expanded(
-                  child: RadioListTile<Answer_1>(
-                    title: const Text('語彙レベル３'),
-                    value: Answer_1.level3,
-                    groupValue: answerVal_1[index],
-                    onChanged: (Answer_1? value) {
-                      setState(() {
-                        answerVal_1[index] = value;
-                      });
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: RadioListTile<Answer_1>(
-                    title: const Text('語彙レベル４'),
-                    value: Answer_1.level4,
-                    groupValue: answerVal_1[index],
-                    onChanged: (Answer_1? value) {
-                      setState(() {
-                        answerVal_1[index] = value;
-                      });
-                    },
-                  ),
-                ),
- */
               ],
             ),
           ),
@@ -165,10 +266,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isChecked[0],
+                    value: _isCheck_food, //_isChecked[0],
                     onChanged: (bool? value) {
                       setState(() {
-                        _isChecked[0] = value!;
+                        _isCheck_food = value!;
+                        //               _isChecked[0] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -184,10 +286,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isChecked[1],
+                    value: _isCheck_animal, //_isChecked[1],
                     onChanged: (bool? value) {
                       setState(() {
-                        _isChecked[1] = value!;
+                        _isCheck_animal = value!;
+                        //_isChecked[1] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -203,10 +306,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isChecked[2],
+                    value: _isCheck_norimono, //_isChecked[2],
                     onChanged: (bool? value) {
                       setState(() {
-                        _isChecked[2] = value!;
+                        _isCheck_norimono = value!;
+                        //_isChecked[2] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -222,40 +326,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isChecked[3],
+                    value: _isCheck_hito, //_isChecked[3],
                     onChanged: (bool? value) {
                       setState(() {
-                        _isChecked[3] = value!;
+                        _isCheck_hito = value!;
+                        //_isChecked[3] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
-/*                Expanded(
-                  child: CheckboxListTile(
-                    title: Text("場所"),
-                    value: _isChecked[4],
-                    onChanged: (bool? value) {
-                      setState(() {
-                        _isChecked[4] = value!;
-                      });
-                    },
-                    controlAffinity: ListTileControlAffinity.leading,
-                  ),
-                ),
-                Expanded(
-                  child: CheckboxListTile(
-                    title: Text("動詞"),
-                    value: _isChecked[5],
-                    onChanged: (bool? value) {
-                      setState(() {
-                        _isChecked[5] = value!;
-                      });
-                    },
-                    controlAffinity: ListTileControlAffinity.leading,
-                  ),
-                ),
-*/
                 Expanded(
                   child: CheckboxListTile(
                     title: const Text(
@@ -266,10 +346,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isChecked[6],
+                    value: _isCheck_etc, //_isChecked[4],
                     onChanged: (bool? value) {
                       setState(() {
-                        _isChecked[6] = value!;
+                        _isCheck_etc = value!;
+                        //_isChecked[4] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -296,7 +377,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '１',
                       style: TextStyle(
@@ -305,17 +386,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.one,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.one,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '２',
                       style: TextStyle(
@@ -324,17 +405,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.two,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.two,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '３',
                       style: TextStyle(
@@ -343,17 +424,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.three,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.three,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '４',
                       style: TextStyle(
@@ -362,17 +443,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.four,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.four,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '５',
                       style: TextStyle(
@@ -381,17 +462,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.five,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.five,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '６',
                       style: TextStyle(
@@ -400,17 +481,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.six,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.six,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '８',
                       style: TextStyle(
@@ -419,17 +500,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.eight,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.eight,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '９',
                       style: TextStyle(
@@ -438,17 +519,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.nine,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.nine,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_2>(
+                  child: RadioListTile<Answer_card>(
                     title: const Text(
                       '10',
                       style: TextStyle(
@@ -457,11 +538,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_2.ten,
-                    groupValue: answerVal_2[index],
-                    onChanged: (Answer_2? value) {
+                    value: Answer_card.ten,
+                    groupValue: card_number,
+                    onChanged: (Answer_card? value) {
                       setState(() {
-                        answerVal_2[index] = value;
+                        card_number = value;
                       });
                     },
                   ),
@@ -477,76 +558,112 @@ class _MyHomePageState extends State<MyHomePage> {
           OutlinedButton(
             style: OutlinedButton.styleFrom(minimumSize: Size(200, 50)),
             onPressed: () {
-              child:
-              (() {
-                switch (answerVal_2[0]) {
-                  case Answer_2.one:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => OneCardDisp(),
-                        ));
-                    break;
-                  case Answer_2.two:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TwoCardsDisp(),
-                        ));
-                    break;
-                  case Answer_2.three:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ThreeCardsDisp(),
-                        ));
-                    break;
-                  case Answer_2.four:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FourCardsDisp(),
-                        ));
-                    break;
-                  case Answer_2.five:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FiveCardsDisp(),
-                        ));
-                    break;
-                  case Answer_2.six:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SixCardsDisp(),
-                        ));
-                    break;
-                  case Answer_2.eight:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EightCardsDisp(),
-                        ));
-                    break;
-                  case Answer_2.nine:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NineCardsDisp(),
-                        ));
-                    break;
-                  case Answer_2.ten:
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TenCardsDisp(),
-                        ));
-                    break;
-                }
-              })();
+//                         child:
+//                       (() {
+              disp_pics = [];
+              switch (word_level) {
+                case Answer_level.level1:
+                  if (_isCheck_food = true) {
+                    disp_pics = disp_pics + pic_food_level1;
+                  }
+                  if (_isCheck_animal = true) {
+                    disp_pics = disp_pics + pic_animal_level1;
+                  }
+                  if (_isCheck_norimono = true) {
+                    disp_pics = disp_pics + pic_norimono_level1;
+                  }
+                  if (_isCheck_hito = true) {
+                    disp_pics = disp_pics + pic_hito_level1;
+                  }
+                  if (_isCheck_etc = true) {
+                    disp_pics = disp_pics + pic_etc_level1;
+                  }
+                  break;
+                case Answer_level.level2:
+                  if (_isCheck_food = true) {
+                    disp_pics = disp_pics + pic_food_level2;
+                  }
+                  if (_isCheck_animal = true) {
+                    disp_pics = disp_pics + pic_animal_level2;
+                  }
+                  if (_isCheck_norimono = true) {
+                    disp_pics = disp_pics + pic_norimono_level2;
+                  }
+                  if (_isCheck_hito = true) {
+                    disp_pics = disp_pics + pic_hito_level2;
+                  }
+                  if (_isCheck_etc = true) {
+                    disp_pics = disp_pics + pic_etc_level2;
+                  }
+                  break;
+              }
 
-              //画像のファイル名の検索をして、リストにして次の画面に渡す
+              switch (card_number) {
+                case Answer_card.one:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OneCardDisp(),
+                      ));
+                  break;
+                case Answer_card.two:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TwoCardsDisp(),
+                      ));
+                  break;
+                case Answer_card.three:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ThreeCardsDisp(),
+                      ));
+                  break;
+                case Answer_card.four:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FourCardsDisp(),
+                      ));
+                  break;
+                case Answer_card.five:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FiveCardsDisp(),
+                      ));
+                  break;
+                case Answer_card.six:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SixCardsDisp(),
+                      ));
+                  break;
+                case Answer_card.eight:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EightCardsDisp(),
+                      ));
+                  break;
+                case Answer_card.nine:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NineCardsDisp(),
+                      ));
+                  break;
+                case Answer_card.ten:
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TenCardsDisp(),
+                      ));
+                  break;
+              }
+//          })();
             },
             child: const Text(
               'カード表示',

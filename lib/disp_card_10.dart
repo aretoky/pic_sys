@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 
 class TenCardsDisp extends StatelessWidget {
   @override
@@ -17,38 +18,38 @@ class TenCardsDisp extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Image.asset('images/a_1.png'),
+                  child: Image.asset(disp_pics[0]),
                 ),
                 Expanded(
-                  child: Image.asset('images/b_1.png'),
+                  child: Image.asset(disp_pics[1]),
                 ),
                 Expanded(
-                  child: Image.asset('images/c_1.png'),
+                  child: Image.asset(disp_pics[2]),
                 ),
                 Expanded(
-                  child: Image.asset('images/d_1.png'),
+                  child: Image.asset(disp_pics[3]),
                 ),
                 Expanded(
-                  child: Image.asset('images/e_1.png'),
+                  child: Image.asset(disp_pics[4]),
                 ),
               ],
             ),
             Row(
               children: [
                 Expanded(
-                  child: Image.asset('images/f_1.png'),
+                  child: Image.asset(disp_pics[5]),
                 ),
                 Expanded(
-                  child: Image.asset('images/g_1.png'),
+                  child: Image.asset(disp_pics[6]),
                 ),
                 Expanded(
-                  child: Image.asset('images/h_1.png'),
+                  child: Image.asset(disp_pics[7]),
                 ),
                 Expanded(
-                  child: Image.asset('images/i_1.png'),
+                  child: Image.asset(disp_pics[8]),
                 ),
                 Expanded(
-                  child: Image.asset('images/j_1.png'),
+                  child: Image.asset(disp_pics[9]),
                 ),
               ],
             ),
