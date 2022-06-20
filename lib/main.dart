@@ -162,9 +162,11 @@ var pic_norimono_level2 = [
   'images/norimono2_10.png',
 ];
 
+//var disp_pics = [];
 var disp_pics = [];
 var picWidth;
 var picHeight;
+var maxCardNum;
 
 class _MyHomePageState extends State<MyHomePage> {
   var word_level;
@@ -563,39 +565,50 @@ class _MyHomePageState extends State<MyHomePage> {
             style: OutlinedButton.styleFrom(minimumSize: Size(200, 50)),
             onPressed: () {
               disp_pics = [];
+              maxCardNum = 0;
               switch (word_level) {
                 case Answer_level.level1:
-                  if (_isCheck_food = true) {
+                  if (_isCheck_food == true) {
                     disp_pics = disp_pics + pic_food_level1;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_animal = true) {
+                  if (_isCheck_animal == true) {
                     disp_pics = disp_pics + pic_animal_level1;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_norimono = true) {
+                  if (_isCheck_norimono == true) {
                     disp_pics = disp_pics + pic_norimono_level1;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_hito = true) {
+                  if (_isCheck_hito == true) {
                     disp_pics = disp_pics + pic_hito_level1;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_etc = true) {
+                  if (_isCheck_etc == true) {
                     disp_pics = disp_pics + pic_etc_level1;
+                    maxCardNum += 10;
                   }
                   break;
                 case Answer_level.level2:
-                  if (_isCheck_food = true) {
+                  if (_isCheck_food == true) {
                     disp_pics = disp_pics + pic_food_level2;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_animal = true) {
+                  if (_isCheck_animal == true) {
                     disp_pics = disp_pics + pic_animal_level2;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_norimono = true) {
+                  if (_isCheck_norimono == true) {
                     disp_pics = disp_pics + pic_norimono_level2;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_hito = true) {
+                  if (_isCheck_hito == true) {
                     disp_pics = disp_pics + pic_hito_level2;
+                    maxCardNum += 10;
                   }
-                  if (_isCheck_etc = true) {
+                  if (_isCheck_etc == true) {
                     disp_pics = disp_pics + pic_etc_level2;
+                    maxCardNum += 10;
                   }
                   break;
               }
@@ -607,7 +620,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => OneCardDisp(),
+                        builder: (context) => OneCard(),
                       ));
                   break;
                 case Answer_card.two:
@@ -616,7 +629,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => TwoCardsDisp(),
+                        builder: (context) => TwoCard(),
                       ));
                   break;
                 case Answer_card.three:
@@ -625,7 +638,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ThreeCardsDisp(),
+                        builder: (context) => ThreeCard(),
                       ));
                   break;
                 case Answer_card.four:
@@ -634,7 +647,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FourCardsDisp(),
+                        builder: (context) => FourCard(),
                       ));
                   break;
                 case Answer_card.five:
@@ -643,7 +656,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FiveCardsDisp(),
+                        builder: (context) => FiveCard(),
                       ));
                   break;
                 case Answer_card.six:
@@ -652,7 +665,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SixCardsDisp(),
+                        builder: (context) => SixCard(),
                       ));
                   break;
                 case Answer_card.eight:
@@ -661,7 +674,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EightCardsDisp(),
+                        builder: (context) => EightCard(),
                       ));
                   break;
                 case Answer_card.nine:
@@ -670,7 +683,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => NineCardsDisp(),
+                        builder: (context) => NineCard(),
                       ));
                   break;
                 case Answer_card.ten:
@@ -679,7 +692,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => TenCardsDisp(),
+                        builder: (context) => TenCard(),
                       ));
                   break;
               }

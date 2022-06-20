@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 
-var _index = 0;
+class OneCard extends StatefulWidget {
+  @override
+  OneCardDisp createState() => new OneCardDisp();
+}
 
-class OneCardDisp extends StatelessWidget {
+class OneCardDisp extends State<OneCard> {
+  var _index = 0;
+  var _maxNum = maxCardNum;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,14 +36,26 @@ class OneCardDisp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
+                  onPressed: () {
+                    _index--;
+                    if (_index < 0) {
+                      _index = 0;
+                    }
+                    setState(() {});
+                  },
                   iconSize: 100,
-                  onPressed: _handlePressed_next,
                   color: Colors.blue,
                   icon: Icon(Icons.navigate_before),
                 ),
                 IconButton(
+                  onPressed: () {
+                    _index++;
+                    if (_index > _maxNum - 1) {
+                      _index = _maxNum - 1;
+                    }
+                    setState(() {});
+                  },
                   iconSize: 100,
-                  onPressed: _handlePressed_before,
                   color: Colors.blue,
                   icon: Icon(Icons.navigate_next),
                 ),
@@ -50,12 +67,4 @@ class OneCardDisp extends StatelessWidget {
 //      ),
     );
   }
-}
-
-void _handlePressed_next() {
-  _index++;
-}
-
-void _handlePressed_before() {
-  _index--;
 }
