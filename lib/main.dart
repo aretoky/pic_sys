@@ -163,6 +163,8 @@ var pic_norimono_level2 = [
 ];
 
 var disp_pics = [];
+var picWidth;
+var picHeight;
 
 class _MyHomePageState extends State<MyHomePage> {
   var word_level;
@@ -176,11 +178,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final double deviceWidth = MediaQuery.of(context).size.width;
+    final double deviceHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      /* ここに戻る */
       body: Column(
         children: <Widget>[
           Text(''),
@@ -598,6 +602,8 @@ class _MyHomePageState extends State<MyHomePage> {
               disp_pics.shuffle();
               switch (card_number) {
                 case Answer_card.one:
+                  picWidth = deviceWidth * 0.7;
+                  picHeight = deviceHeight * 0.7;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -605,6 +611,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.two:
+                  picWidth = deviceWidth * 0.7 / 2;
+                  picHeight = deviceHeight * 0.7;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -612,6 +620,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.three:
+                  picWidth = deviceWidth * 0.7 / 3;
+                  picHeight = deviceHeight * 0.7;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -619,6 +629,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.four:
+                  picWidth = deviceWidth * 0.7 / 2;
+                  picHeight = deviceHeight * 0.7 / 2;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -626,6 +638,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.five:
+                  picWidth = deviceWidth * 0.7 / 5;
+                  picHeight = deviceHeight * 0.7;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -633,6 +647,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.six:
+                  picWidth = deviceWidth * 0.7 / 3;
+                  picHeight = deviceHeight * 0.7 / 2;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -640,6 +656,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.eight:
+                  picWidth = deviceWidth * 0.75 / 4;
+                  picHeight = deviceHeight * 0.75 / 2;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -647,6 +665,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.nine:
+                  picWidth = deviceWidth * 0.75 / 3;
+                  picHeight = deviceHeight * 0.75 / 3;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -654,6 +674,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
                   break;
                 case Answer_card.ten:
+                  picWidth = deviceWidth * 0.75 / 5;
+                  picHeight = deviceHeight * 0.75 / 2;
                   Navigator.push(
                       context,
                       MaterialPageRoute(

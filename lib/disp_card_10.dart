@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 
+var _index = 0;
+
 class TenCardsDisp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,44 +14,68 @@ class TenCardsDisp extends StatelessWidget {
         width: double.infinity,
         alignment: Alignment.center,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Image.asset(disp_pics[0]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[1]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 1]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[2]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 2]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[3]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 3]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[4]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 4]),
                 ),
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Image.asset(disp_pics[5]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 5]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[6]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 6]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[7]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 7]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[8]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 8]),
                 ),
-                Expanded(
-                  child: Image.asset(disp_pics[9]),
+                Container(
+                  width: picWidth,
+                  height: picHeight,
+                  child: Image.asset(disp_pics[_index + 9]),
                 ),
               ],
             ),

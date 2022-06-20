@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 
+var _index = 0;
+
 class TwoCardsDisp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,11 +14,17 @@ class TwoCardsDisp extends StatelessWidget {
         width: double.infinity,
         alignment: Alignment.center,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(child: Image.asset('images/a_1.png')),
-            Expanded(child: Image.asset('images/b_1.png')),
+            Container(
+                width: picWidth,
+                height: picHeight,
+                child: Image.asset(disp_pics[_index])),
+            Container(
+                width: picWidth,
+                height: picHeight,
+                child: Image.asset(disp_pics[_index + 1])),
           ],
         ),
       ),

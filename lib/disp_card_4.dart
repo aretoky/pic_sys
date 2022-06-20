@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 
+var _index = 0;
+
 class FourCardsDisp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,34 +14,46 @@ class FourCardsDisp extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         alignment: Alignment.center,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
+                Container(
+                  width: picWidth,
+                  height: picHeight,
                   child: Image.asset(
-                    'images/a_1.png',
+                    disp_pics[_index],
                   ),
                 ),
-                Expanded(
+                Container(
+                  width: picWidth,
+                  height: picHeight,
                   child: Image.asset(
-                    'images/b_1.png',
+                    disp_pics[_index + 1],
                   ),
                 ),
               ],
             ),
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
+                Container(
+                  width: picWidth,
+                  height: picHeight,
                   child: Image.asset(
-                    'images/c_1.png',
+                    disp_pics[_index + 2],
                   ),
                 ),
-                Expanded(
+                Container(
+                  width: picWidth,
+                  height: picHeight,
                   child: Image.asset(
-                    'images/d_1.png',
+                    disp_pics[_index + 3],
                   ),
                 ),
               ],
