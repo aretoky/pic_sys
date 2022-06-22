@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "73642971836",
+    "project_id": "fhc-pic-sys",
+    "storage_bucket": "fhc-pic-sys.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73642971836:android:dd4c5562d865b9e26d76b9",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73642971836-5ad2tmnmrs857hb0keabljie4c10o25e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE7FnHezkMnp0mhsD-_X2In1EtPkk8epY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73642971836-5ad2tmnmrs857hb0keabljie4c10o25e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
