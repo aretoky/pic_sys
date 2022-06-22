@@ -37,9 +37,9 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-enum Answer_level { level1, level2 }
+enum RadioLevel { level1, level2 }
 
-enum Answer_card { one, two, three, four, five, six, eight, nine, ten }
+enum RadioCard { one, two, three, four, five, six, eight, nine, ten }
 
 var pic_animal_level1 = [
   'images/animal1_1.png',
@@ -53,17 +53,17 @@ var pic_animal_level1 = [
   'images/animal1_9.png',
   'images/animal1_10.png',
 ];
-var pic_etc_level1 = [
-  'images/etc1_1.png',
-  'images/etc1_2.png',
-  'images/etc1_3.png',
-  'images/etc1_4.png',
-  'images/etc1_5.png',
-  'images/etc1_6.png',
-  'images/etc1_7.png',
-  'images/etc1_8.png',
-  'images/etc1_9.png',
-  'images/etc1_10.png',
+var pic_goods_level1 = [
+  'images/goods1_1.png',
+  'images/goods1_2.png',
+  'images/goods1_3.png',
+  'images/goods1_4.png',
+  'images/goods1_5.png',
+  'images/goods1_6.png',
+  'images/goods1_7.png',
+  'images/goods1_8.png',
+  'images/goods1_9.png',
+  'images/goods1_10.png',
 ];
 var pic_food_level1 = [
   'images/food1_1.png',
@@ -113,17 +113,17 @@ var pic_animal_level2 = [
   'images/animal2_9.png',
   'images/animal2_10.png',
 ];
-var pic_etc_level2 = [
-  'images/etc2_1.png',
-  'images/etc2_2.png',
-  'images/etc2_3.png',
-  'images/etc2_4.png',
-  'images/etc2_5.png',
-  'images/etc2_6.png',
-  'images/etc2_7.png',
-  'images/etc2_8.png',
-  'images/etc2_9.png',
-  'images/etc2_10.png',
+var pic_goods_level2 = [
+  'images/goods2_1.png',
+  'images/goods2_2.png',
+  'images/goods2_3.png',
+  'images/goods2_4.png',
+  'images/goods2_5.png',
+  'images/goods2_6.png',
+  'images/goods2_7.png',
+  'images/goods2_8.png',
+  'images/goods2_9.png',
+  'images/goods2_10.png',
 ];
 var pic_food_level2 = [
   'images/food2_1.png',
@@ -169,14 +169,14 @@ var picHeight;
 var maxCardNum;
 
 class _MyHomePageState extends State<MyHomePage> {
-  var word_level;
-  var card_number;
-
   var _isCheck_food = true;
   var _isCheck_animal = true;
   var _isCheck_norimono = true;
   var _isCheck_hito = true;
-  var _isCheck_etc = true;
+  var _isCheck_goods = true;
+
+  RadioLevel? _levelValue = RadioLevel.level1;
+  RadioCard? _cardValue = RadioCard.one;
 
   @override
   Widget build(BuildContext context) {
@@ -205,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 Expanded(
-                  child: RadioListTile<Answer_level>(
+                  child: RadioListTile<RadioLevel>(
                     title: const Text(
                       '語彙レベル１',
                       style: TextStyle(
@@ -214,17 +214,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_level.level1,
-                    groupValue: word_level,
-                    onChanged: (Answer_level? value) {
+                    value: RadioLevel.level1,
+                    groupValue: _levelValue,
+                    onChanged: (RadioLevel? value) {
                       setState(() {
-                        word_level = value;
+                        _levelValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_level>(
+                  child: RadioListTile<RadioLevel>(
                     title: const Text(
                       '語彙レベル２',
                       style: TextStyle(
@@ -233,11 +233,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_level.level2,
-                    groupValue: word_level,
-                    onChanged: (Answer_level? value) {
+                    value: RadioLevel.level2,
+                    groupValue: _levelValue,
+                    onChanged: (RadioLevel? value) {
                       setState(() {
-                        word_level = value;
+                        _levelValue = value;
                       });
                     },
                   ),
@@ -272,11 +272,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isCheck_food, //_isChecked[0],
+                    value: _isCheck_food,
                     onChanged: (bool? value) {
                       setState(() {
                         _isCheck_food = value!;
-                        //               _isChecked[0] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -292,11 +291,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isCheck_animal, //_isChecked[1],
+                    value: _isCheck_animal,
                     onChanged: (bool? value) {
                       setState(() {
                         _isCheck_animal = value!;
-                        //_isChecked[1] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -312,11 +310,29 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isCheck_norimono, //_isChecked[2],
+                    value: _isCheck_norimono,
                     onChanged: (bool? value) {
                       setState(() {
                         _isCheck_norimono = value!;
-                        //_isChecked[2] = value!;
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
+                ),
+                Expanded(
+                  child: CheckboxListTile(
+                    title: const Text(
+                      "物品",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                    value: _isCheck_goods,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _isCheck_goods = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -332,31 +348,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: _isCheck_hito, //_isChecked[3],
+                    value: _isCheck_hito,
                     onChanged: (bool? value) {
                       setState(() {
                         _isCheck_hito = value!;
-                        //_isChecked[3] = value!;
-                      });
-                    },
-                    controlAffinity: ListTileControlAffinity.leading,
-                  ),
-                ),
-                Expanded(
-                  child: CheckboxListTile(
-                    title: const Text(
-                      "その他",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                        color: Colors.black,
-                      ),
-                    ),
-                    value: _isCheck_etc, //_isChecked[4],
-                    onChanged: (bool? value) {
-                      setState(() {
-                        _isCheck_etc = value!;
-                        //_isChecked[4] = value!;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -383,7 +378,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '１',
                       style: TextStyle(
@@ -392,17 +387,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.one,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.one,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '２',
                       style: TextStyle(
@@ -411,17 +406,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.two,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.two,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '３',
                       style: TextStyle(
@@ -430,17 +425,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.three,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.three,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '４',
                       style: TextStyle(
@@ -449,17 +444,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.four,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.four,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '５',
                       style: TextStyle(
@@ -468,17 +463,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.five,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.five,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '６',
                       style: TextStyle(
@@ -487,17 +482,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.six,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.six,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '８',
                       style: TextStyle(
@@ -506,17 +501,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.eight,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.eight,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '９',
                       style: TextStyle(
@@ -525,17 +520,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.nine,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.nine,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
                 ),
                 Expanded(
-                  child: RadioListTile<Answer_card>(
+                  child: RadioListTile<RadioCard>(
                     title: const Text(
                       '10',
                       style: TextStyle(
@@ -544,11 +539,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                     ),
-                    value: Answer_card.ten,
-                    groupValue: card_number,
-                    onChanged: (Answer_card? value) {
+                    value: RadioCard.ten,
+                    groupValue: _cardValue,
+                    onChanged: (RadioCard? value) {
                       setState(() {
-                        card_number = value;
+                        _cardValue = value;
                       });
                     },
                   ),
@@ -566,8 +561,8 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               disp_pics = [];
               maxCardNum = 0;
-              switch (word_level) {
-                case Answer_level.level1:
+              switch (_levelValue) {
+                case RadioLevel.level1:
                   if (_isCheck_food == true) {
                     disp_pics = disp_pics + pic_food_level1;
                     maxCardNum += 10;
@@ -584,12 +579,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     disp_pics = disp_pics + pic_hito_level1;
                     maxCardNum += 10;
                   }
-                  if (_isCheck_etc == true) {
-                    disp_pics = disp_pics + pic_etc_level1;
+                  if (_isCheck_goods == true) {
+                    disp_pics = disp_pics + pic_goods_level1;
                     maxCardNum += 10;
                   }
                   break;
-                case Answer_level.level2:
+                case RadioLevel.level2:
                   if (_isCheck_food == true) {
                     disp_pics = disp_pics + pic_food_level2;
                     maxCardNum += 10;
@@ -606,15 +601,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     disp_pics = disp_pics + pic_hito_level2;
                     maxCardNum += 10;
                   }
-                  if (_isCheck_etc == true) {
-                    disp_pics = disp_pics + pic_etc_level2;
+                  if (_isCheck_goods == true) {
+                    disp_pics = disp_pics + pic_goods_level2;
                     maxCardNum += 10;
                   }
                   break;
               }
               disp_pics.shuffle();
-              switch (card_number) {
-                case Answer_card.one:
+              switch (_cardValue) {
+                case RadioCard.one:
                   picWidth = deviceWidth * 0.7;
                   picHeight = deviceHeight * 0.7;
                   Navigator.push(
@@ -623,7 +618,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => OneCard(),
                       ));
                   break;
-                case Answer_card.two:
+                case RadioCard.two:
                   picWidth = deviceWidth * 0.7 / 2;
                   picHeight = deviceHeight * 0.7;
                   Navigator.push(
@@ -632,7 +627,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => TwoCard(),
                       ));
                   break;
-                case Answer_card.three:
+                case RadioCard.three:
                   picWidth = deviceWidth * 0.7 / 3;
                   picHeight = deviceHeight * 0.7;
                   Navigator.push(
@@ -641,7 +636,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => ThreeCard(),
                       ));
                   break;
-                case Answer_card.four:
+                case RadioCard.four:
                   picWidth = deviceWidth * 0.7 / 2;
                   picHeight = deviceHeight * 0.7 / 2;
                   Navigator.push(
@@ -650,7 +645,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => FourCard(),
                       ));
                   break;
-                case Answer_card.five:
+                case RadioCard.five:
                   picWidth = deviceWidth * 0.7 / 5;
                   picHeight = deviceHeight * 0.7;
                   Navigator.push(
@@ -659,7 +654,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => FiveCard(),
                       ));
                   break;
-                case Answer_card.six:
+                case RadioCard.six:
                   picWidth = deviceWidth * 0.7 / 3;
                   picHeight = deviceHeight * 0.7 / 2;
                   Navigator.push(
@@ -668,7 +663,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => SixCard(),
                       ));
                   break;
-                case Answer_card.eight:
+                case RadioCard.eight:
                   picWidth = deviceWidth * 0.75 / 4;
                   picHeight = deviceHeight * 0.75 / 2;
                   Navigator.push(
@@ -677,7 +672,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => EightCard(),
                       ));
                   break;
-                case Answer_card.nine:
+                case RadioCard.nine:
                   picWidth = deviceWidth * 0.75 / 3;
                   picHeight = deviceHeight * 0.75 / 3;
                   Navigator.push(
@@ -686,7 +681,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => NineCard(),
                       ));
                   break;
-                case Answer_card.ten:
+                case RadioCard.ten:
                   picWidth = deviceWidth * 0.75 / 5;
                   picHeight = deviceHeight * 0.75 / 2;
                   Navigator.push(
