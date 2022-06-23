@@ -9,7 +9,13 @@ import 'package:flutter_application_1/disp_card_6.dart';
 import 'package:flutter_application_1/disp_card_8.dart';
 import 'package:flutter_application_1/disp_card_9.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
