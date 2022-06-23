@@ -203,6 +203,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             child: Row(
+              //  crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
                   child: RadioListTile<RadioLevel>(
