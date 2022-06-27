@@ -31,6 +31,8 @@ class OneCardDisp extends State<OneCard> {
             ),
           ),
           SafeArea(
+            child:Align(
+            alignment: Alignment.bottomCenter,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -60,6 +62,7 @@ class OneCardDisp extends State<OneCard> {
                   icon: Icon(Icons.navigate_next),
                 ),
               ],
+            ),
             ),
           ),
         ],

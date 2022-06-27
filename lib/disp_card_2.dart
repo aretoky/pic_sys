@@ -36,35 +36,38 @@ class TwoCardDisp extends State<TwoCard> {
             ),
           ),
           SafeArea(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    _index -= 2;
-                    if (_index < 0) {
-                      _index = 0;
-                    }
-                    setState(() {});
-                  },
-                  iconSize: 100,
-                  color: Colors.blue,
-                  icon: Icon(Icons.navigate_before),
-                ),
-                IconButton(
-                  onPressed: () {
-                    _index += 2;
-                    if (_index >= _maxNum) {
+            child:Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () {
                       _index -= 2;
-                    }
-                    setState(() {});
-                  },
-                  iconSize: 100,
-                  color: Colors.blue,
-                  icon: Icon(Icons.navigate_next),
-                ),
-              ],
+                      if (_index < 0) {
+                        _index = 0;
+                      }
+                      setState(() {});
+                    },
+                    iconSize: 100,
+                    color: Colors.blue,
+                    icon: Icon(Icons.navigate_before),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      _index += 2;
+                      if (_index >= _maxNum) {
+                        _index -= 2;
+                      }
+                      setState(() {});
+                    },
+                    iconSize: 100,
+                    color: Colors.blue,
+                    icon: Icon(Icons.navigate_next),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

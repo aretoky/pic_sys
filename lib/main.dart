@@ -13,6 +13,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -28,9 +29,13 @@ class MyApp extends StatelessWidget {
       title: 'Cotoba System(仮)',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: "UDGothic", // ここを追加
+
       ),
       home: const MyHomePage(title: 'Cotoba System(仮)'),
     );
+    WidgetsFlutterBinding.ensureInitialized();
+
   }
 }
 
@@ -183,42 +188,50 @@ class _MyHomePageState extends State<MyHomePage> {
 
   RadioLevel? _levelValue = RadioLevel.level1;
   RadioCard? _cardValue = RadioCard.one;
-
   @override
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double deviceHeight = MediaQuery.of(context).size.height;
+    var _dispFontSize = deviceHeight/30;
+
+    var _dispMenuHeight = deviceHeight/20;
+    var _dispGoiWidth = deviceWidth/3;
+    var _dispCategoryWidth = deviceWidth/5;
+    var _dispCardWidth = deviceWidth/10;
+    if(deviceWidth<400){
+      _dispFontSize = deviceHeight/(30*deviceWidth/400);
+    }
+    
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Column(
-        children: <Widget>[
-          Text(''),
-          Text(''),
-          Text(''),
-          Text(''),
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,        
+        children:[
           Text(
-            '語彙獲得レベル',
+            '語彙獲得レベル', 
             style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
+              //fontWeight: FontWeight.bold,
+              fontSize: _dispFontSize,
               color: Theme.of(context).primaryColor,
             ),
           ),
           Container(
             child: Row(
-              //  crossAxisAlignment: CrossAxisAlignment.start,
+         //     crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(
+                SizedBox(
+                  width: _dispGoiWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioLevel>(
-                    title: const Text(
+                    title:  Text(
                       '語彙レベル１',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -231,13 +244,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispGoiWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioLevel>(
-                    title: const Text(
+                    title: Text(
                       '語彙レベル２',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -253,30 +268,26 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Text(' '),
-          Text(' '),
-          Text(' '),
-          Text(' '),
-          Text(' '),
           Text(
             'カテゴリー選択',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
+              //fontWeight: FontWeight.bold,
+              fontSize: _dispFontSize,
               color: Theme.of(context).primaryColor,
             ),
           ),
-          Text(' '),
           Container(
             child: Row(
               children: [
-                Expanded(
+                SizedBox(
+                  width: _dispCategoryWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: CheckboxListTile(
-                    title: const Text(
+                    title: Text(
                       "食べ物",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                         fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -289,13 +300,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCategoryWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: CheckboxListTile(
-                    title: const Text(
+                    title: Text(
                       "動物",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                         fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -308,13 +321,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCategoryWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: CheckboxListTile(
-                    title: const Text(
+                    title: Text(
                       "乗り物",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                         fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -327,13 +342,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCategoryWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: CheckboxListTile(
-                    title: const Text(
+                    title: Text(
                       "物品",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                         fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -346,13 +363,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCategoryWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: CheckboxListTile(
-                    title: const Text(
+                    title: Text(
                       "人",
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -368,30 +387,27 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Text(' '),
-          Text(' '),
-          Text(' '),
-          Text(' '),
-          Text(' '),
           Text(
             'カード配列選択',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
+              //fontWeight: FontWeight.bold,
+              fontSize: _dispFontSize,
               color: Theme.of(context).primaryColor,
             ),
           ),
-          Text(' '),
           Container(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,//spaceEvenly, 
               children: [
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '１',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -404,13 +420,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '２',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -423,13 +441,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '３',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -442,13 +462,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '４',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -461,13 +483,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title:  Text(
                       '５',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -480,13 +504,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '６',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -499,13 +525,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '８',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -518,13 +546,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '９',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -537,13 +567,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: _dispCardWidth, //横幅
+                  height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title: const Text(
+                    title: Text(
                       '10',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        //fontWeight: FontWeight.bold,
+                        fontSize:  _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -559,11 +591,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Text(' '),
-          Text(' '),
-          Text(' '),
-          Text(' '),
-          Text(' '),
           OutlinedButton(
             style: OutlinedButton.styleFrom(minimumSize: Size(200, 50)),
             onPressed: () {
@@ -700,11 +727,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   break;
               }
             },
-            child: const Text(
+            child: Text(
               'カード表示',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
+                //fontWeight: FontWeight.bold,
+                fontSize:  _dispFontSize*2/3,
                 color: Colors.black,
               ),
             ),

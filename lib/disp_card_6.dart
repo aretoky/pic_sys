@@ -70,35 +70,38 @@ class SixCardDisp extends State<SixCard> {
             ),
           ),
           SafeArea(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    _index -= 6;
-                    if (_index < 0) {
-                      _index = 0;
-                    }
-                    setState(() {});
-                  },
-                  iconSize: 100,
-                  color: Colors.blue,
-                  icon: Icon(Icons.navigate_before),
-                ),
-                IconButton(
-                  onPressed: () {
-                    _index += 6;
-                    if (_index >= (_maxNum ~/ 6) * 6 - 1) {
+            child:Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () {
                       _index -= 6;
-                    }
-                    setState(() {});
-                  },
+                      if (_index < 0) {
+                        _index = 0;
+                      }
+                      setState(() {});
+                    },
+                    iconSize: 100,
+                    color: Colors.blue,
+                    icon: Icon(Icons.navigate_before),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                      _index += 6;
+                      if (_index >= (_maxNum ~/ 6) * 6 - 1) {
+                        _index -= 6;
+                      }
+                      setState(() {});
+                    },
                   iconSize: 100,
                   color: Colors.blue,
                   icon: Icon(Icons.navigate_next),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
