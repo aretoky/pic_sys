@@ -30,18 +30,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: "UDGothic", // ここを追加
-
       ),
       home: const MyHomePage(title: 'Cotoba System(仮)'),
     );
-    WidgetsFlutterBinding.ensureInitialized();
-
+    //  WidgetsFlutterBinding.ensureInitialized();
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -49,8 +46,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 enum RadioLevel { level1, level2 }
-
 enum RadioCard { one, two, three, four, five, six, eight, nine, ten }
+enum OnseiTag{ nashi, ari}
 
 var pic_animal_level1 = [
   'images/animal1_1.png',
@@ -173,11 +170,133 @@ var pic_norimono_level2 = [
   'images/norimono2_10.png',
 ];
 
+var sound_animal_level1 = [
+  'sound/animal1_1.wav',
+  'sound/animal1_2.wav',
+  'sound/animal1_3.wav',
+  'sound/animal1_4.wav',
+  'sound/animal1_5.wav',
+  'sound/animal1_6.wav',
+  'sound/animal1_7.wav',
+  'sound/animal1_8.wav',
+  'sound/animal1_9.wav',
+  'sound/animal1_10.wav',
+];
+var sound_goods_level1 = [
+  'sound/goods1_1.wav',
+  'sound/goods1_2.wav',
+  'sound/goods1_3.wav',
+  'sound/goods1_4.wav',
+  'sound/goods1_5.wav',
+  'sound/goods1_6.wav',
+  'sound/goods1_7.wav',
+  'sound/goods1_8.wav',
+  'sound/goods1_9.wav',
+  'sound/goods1_10.wav',
+];
+var sound_food_level1 = [
+  'sound/food1_1.wav',
+  'sound/food1_2.wav',
+  'sound/food1_3.wav',
+  'sound/food1_4.wav',
+  'sound/food1_5.wav',
+  'sound/food1_6.wav',
+  'sound/food1_7.wav',
+  'sound/food1_8.wav',
+  'sound/food1_9.wav',
+  'sound/food1_10.wav',
+];
+var sound_hito_level1 = [
+  'sound/hito1_1.wav',
+  'sound/hito1_2.wav',
+  'sound/hito1_3.wav',
+  'sound/hito1_4.wav',
+  'sound/hito1_5.wav',
+  'sound/hito1_6.wav',
+  'sound/hito1_7.wav',
+  'sound/hito1_8.wav',
+  'sound/hito1_9.wav',
+  'sound/hito1_10.wav',
+];
+var sound_norimono_level1 = [
+  'sound/norimono1_1.wav',
+  'sound/norimono1_2.wav',
+  'sound/norimono1_3.wav',
+  'sound/norimono1_4.wav',
+  'sound/norimono1_5.wav',
+  'sound/norimono1_6.wav',
+  'sound/norimono1_7.wav',
+  'sound/norimono1_8.wav',
+  'sound/norimono1_9.wav',
+  'sound/norimono1_10.wav',
+];
+var animal_level2 = [
+  'sound/animal2_1.wav',
+  'sound/animal2_2.wav',
+  'sound/animal2_3.wav',
+  'sound/animal2_4.wav',
+  'sound/animal2_5.wav',
+  'sound/animal2_6.wav',
+  'sound/animal2_7.wav',
+  'sound/animal2_8.wav',
+  'sound/animal2_9.wav',
+  'sound/animal2_10.wav',
+];
+var goods_level2 = [
+  'sound/goods2_1.wav',
+  'sound/goods2_2.wav',
+  'sound/goods2_3.wav',
+  'sound/goods2_4.wav',
+  'sound/goods2_5.wav',
+  'sound/goods2_6.wav',
+  'sound/goods2_7.wav',
+  'sound/goods2_8.wav',
+  'sound/goods2_9.wav',
+  'sound/goods2_10.wav',
+];
+var food_level2 = [
+  'sound/food2_1.wav',
+  'sound/food2_2.wav',
+  'sound/food2_3.wav',
+  'sound/food2_4.wav',
+  'sound/food2_5.wav',
+  'sound/food2_6.wav',
+  'sound/food2_7.wav',
+  'sound/food2_8.wav',
+  'sound/food2_9.wav',
+  'sound/food2_10.wav',
+];
+var hito_level2 = [
+  'sound/hito2_1.wav',
+  'sound/hito2_2.wav',
+  'sound/hito2_3.wav',
+  'sound/hito2_4.wav',
+  'sound/hito2_5.wav',
+  'sound/hito2_6.wav',
+  'sound/hito2_7.wav',
+  'sound/hito2_8.wav',
+  'sound/hito2_9.wav',
+  'sound/hito2_10.wav',
+];
+var norimono_level2 = [
+  'sound/norimono2_1.wav',
+  'sound/norimono2_2.wav',
+  'sound/norimono2_3.wav',
+  'sound/norimono2_4.wav',
+  'sound/norimono2_5.wav',
+  'sound/norimono2_6.wav',
+  'sound/norimono2_7.wav',
+  'sound/norimono2_8.wav',
+  'sound/norimono2_9.wav',
+  'sound/norimono2_10.wav',
+];
+
 //var disp_pics = [];
-var disp_pics = [];
+List<String> disp_pics = [];
 var picWidth;
 var picHeight;
 var maxCardNum;
+OnseiTag? onseiFlag = OnseiTag.nashi;
 
 class _MyHomePageState extends State<MyHomePage> {
   var _isCheck_food = true;
@@ -188,50 +307,60 @@ class _MyHomePageState extends State<MyHomePage> {
 
   RadioLevel? _levelValue = RadioLevel.level1;
   RadioCard? _cardValue = RadioCard.one;
+
   @override
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double deviceHeight = MediaQuery.of(context).size.height;
-    var _dispFontSize = deviceHeight/30;
+    var _dispFontSize = deviceHeight / 35;
 
-    var _dispMenuHeight = deviceHeight/20;
-    var _dispGoiWidth = deviceWidth/3;
-    var _dispCategoryWidth = deviceWidth/5;
-    var _dispCardWidth = deviceWidth/10;
-    if(deviceWidth<400){
-      _dispFontSize = deviceHeight/(30*deviceWidth/400);
+    var _dispMenuHeight = deviceHeight / 20;
+    var _dispGoiWidth = deviceWidth / 3;
+    var _dispCategoryWidth = deviceWidth / 5;
+    var _dispCardWidth = deviceWidth / 10;
+
+    if (deviceWidth < 400) {
+      _dispFontSize = deviceHeight / (35 * deviceWidth / 400);
     }
-    
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,        
-        children:[
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+/*          Text(
+            '語彙獲得レベル',
+            style: TextStyle(
+              //fontWeight: FontWeight.bold,
+              fontSize: _dispFontSize,
+              color: Theme.of(context).primaryColor,
+            ),
+          ),*/
+          Container(
+            child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
           Text(
-            '語彙獲得レベル', 
+            '語彙獲得レベル',
             style: TextStyle(
               //fontWeight: FontWeight.bold,
               fontSize: _dispFontSize,
               color: Theme.of(context).primaryColor,
             ),
           ),
-          Container(
-            child: Row(
-         //     crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+              
                 SizedBox(
                   width: _dispGoiWidth, //横幅
                   height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioLevel>(
-                    title:  Text(
+                    title: Text(
                       '語彙レベル１',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -252,7 +381,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '語彙レベル２',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -287,7 +416,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "食べ物",
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                         fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -308,7 +437,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "動物",
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                         fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -329,7 +458,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "乗り物",
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                         fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -350,7 +479,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "物品",
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                         fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -371,7 +500,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "人",
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -397,7 +526,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,//spaceEvenly, 
+              mainAxisAlignment: MainAxisAlignment.spaceAround, //spaceEvenly,
               children: [
                 SizedBox(
                   width: _dispCardWidth, //横幅
@@ -407,7 +536,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '１',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -428,7 +557,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '２',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -449,7 +578,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '３',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -470,7 +599,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '４',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -487,11 +616,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: _dispCardWidth, //横幅
                   height: _dispMenuHeight, //高さ
                   child: RadioListTile<RadioCard>(
-                    title:  Text(
+                    title: Text(
                       '５',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -512,7 +641,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '６',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -533,7 +662,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '８',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -554,7 +683,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '９',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -575,7 +704,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       '10',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                        fontSize:  _dispFontSize,
+                        fontSize: _dispFontSize,
                         color: Colors.black,
                       ),
                     ),
@@ -584,6 +713,66 @@ class _MyHomePageState extends State<MyHomePage> {
                     onChanged: (RadioCard? value) {
                       setState(() {
                         _cardValue = value;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+          Text(
+            '音声呈示',
+            style: TextStyle(
+              //fontWeight: FontWeight.bold,
+              fontSize: _dispFontSize,
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+                SizedBox(
+                  width: _dispGoiWidth, //横幅
+                  height: _dispMenuHeight, //高さ
+                  child: RadioListTile<OnseiTag>(
+                    title: Text(
+                      '音声なし',
+                      style: TextStyle(
+                        //fontWeight: FontWeight.bold,
+                        fontSize: _dispFontSize,
+                        color: Colors.black,
+                      ),
+                    ),
+                    value: OnseiTag.nashi,
+                    groupValue: onseiFlag,
+                    onChanged: (OnseiTag? value) {
+                      setState(() {
+                        onseiFlag = value;
+                      });
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: _dispGoiWidth, //横幅
+                  height: _dispMenuHeight, //高さ
+                  child: RadioListTile<OnseiTag>(
+                    title: Text(
+                      '音声あり',
+                      style: TextStyle(
+                        //fontWeight: FontWeight.bold,
+                        fontSize: _dispFontSize,
+                        color: Colors.black,
+                      ),
+                    ),
+                    
+                    value: OnseiTag.ari,
+                    groupValue: onseiFlag,
+                    onChanged: (OnseiTag? value) {
+                      setState(() {
+                        onseiFlag = value;
                       });
                     },
                   ),
@@ -731,11 +920,12 @@ class _MyHomePageState extends State<MyHomePage> {
               'カード表示',
               style: TextStyle(
                 //fontWeight: FontWeight.bold,
-                fontSize:  _dispFontSize*2/3,
+                fontSize: _dispFontSize * 2 / 3,
                 color: Colors.black,
               ),
             ),
           ),
+
         ],
       ),
     );
