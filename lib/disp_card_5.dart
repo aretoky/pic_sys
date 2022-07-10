@@ -28,7 +28,7 @@ class FiveCardDisp extends State<FiveCard> {
   }
 
   Future<void> _playSoundFile() async {
-    if(onseiFlag == OnseiTag.ari){
+    if (onseiFlag == OnseiTag.ari) {
       await _loadAudioFile();
       await _player.play();
     }
@@ -138,15 +138,15 @@ class FiveCardDisp extends State<FiveCard> {
                       }
                       setState(() {});
                     },
-                    iconSize: 80,
+                    iconSize: 50,
                     color: Colors.blue,
                     icon: Icon(Icons.navigate_before),
                   ),
                   IconButton(
                     onPressed: () {
-                        Navigator.pop(context);
+                      Navigator.pop(context);
                     },
-                    iconSize: 80,
+                    iconSize: 50,
                     color: Colors.yellow,
                     icon: Icon(Icons.restart_alt),
                   ),
@@ -158,7 +158,7 @@ class FiveCardDisp extends State<FiveCard> {
                       }
                       setState(() {});
                     },
-                    iconSize: 80,
+                    iconSize: 50,
                     color: Colors.blue,
                     icon: Icon(Icons.navigate_next),
                   ),

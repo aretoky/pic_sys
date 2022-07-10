@@ -720,7 +720,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(minimumSize: Size(300, 75)),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(300, 75),
+                primary: Colors.blue,
+                onPrimary: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
               onPressed: () {
                 disp_pics = [];
                 maxCardNum = 0;

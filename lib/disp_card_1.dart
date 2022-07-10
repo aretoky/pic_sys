@@ -24,7 +24,6 @@ class OneCardDisp extends State<OneCard> {
 
 //  AudioCache _player = AudioCache();
 
-
   Future<void> _setupSession() async {
     _player = AudioPlayer();
     final session = await AudioSession.instance;
@@ -39,7 +38,7 @@ class OneCardDisp extends State<OneCard> {
   }
 
   Future<void> _playSoundFile() async {
-    if(onseiFlag == OnseiTag.ari){
+    if (onseiFlag == OnseiTag.ari) {
       await _loadAudioFile();
       await _player.play();
     }
@@ -77,7 +76,6 @@ class OneCardDisp extends State<OneCard> {
                     cardSound = cardSound.replaceFirst('images', 'sounds');
                     cardSound = cardSound.replaceFirst('png', 'wav');
                     await _playSoundFile();
-
                   },
                   child: Container(
                       width: picWidth,
@@ -103,15 +101,15 @@ class OneCardDisp extends State<OneCard> {
                       }
                       setState(() {});
                     },
-                    iconSize: 100,
+                    iconSize: 50,
                     color: Colors.blue,
                     icon: Icon(Icons.navigate_before),
                   ),
                   IconButton(
                     onPressed: () {
-                        Navigator.pop(context);
+                      Navigator.pop(context);
                     },
-                    iconSize: 100,
+                    iconSize: 50,
                     color: Colors.yellow,
                     icon: Icon(Icons.restart_alt),
                   ),
@@ -123,7 +121,7 @@ class OneCardDisp extends State<OneCard> {
                       }
                       setState(() {});
                     },
-                    iconSize: 100,
+                    iconSize: 50,
                     color: Colors.blue,
                     icon: Icon(Icons.navigate_next),
                   ),
