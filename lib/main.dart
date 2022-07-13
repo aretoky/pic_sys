@@ -721,7 +721,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(300, 75),
+                minimumSize: Size(300, 60),
                 primary: Colors.blue,
                 onPrimary: Colors.black,
                 shape: RoundedRectangleBorder(
