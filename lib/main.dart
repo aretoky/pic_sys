@@ -317,13 +317,13 @@ class _MyHomePageState extends State<MyHomePage> {
     var _dispFontSize = deviceHeight / 45;
 
     final _dispMenuHeight = deviceHeight / 20;
-    final _dispGoiWidth = deviceWidth / 6;
+    final _dispGoiWidth = deviceWidth / 5.5;
     final _dispGoiHeight = deviceHeight / 4;
-    final _dispCategoryWidth = deviceWidth / 6;
+    final _dispCategoryWidth = deviceWidth / 5.5;
     final _dispCategoryHeight = deviceHeight / 2;
-    final _dispCardWidth = deviceWidth / 6;
+    final _dispCardWidth = deviceWidth / 5.5;
     final _dispCardHeight = deviceHeight / 1.5;
-    final _dispOnseiWidth = deviceWidth / 6;
+    final _dispOnseiWidth = deviceWidth / 5.5;
     final _dispOnseiHeight = deviceHeight / 4;
 
     if (deviceWidth < 400) {
