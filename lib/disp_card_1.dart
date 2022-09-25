@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:just_audio/just_audio.dart';
+// ignore: depend_on_referenced_packages
 import 'package:audio_session/audio_session.dart';
 //import 'package:audioplayers/audioplayers.dart';
 //import 'package:audioplayers/audio_cache.dart';
 
 class OneCard extends StatefulWidget {
   @override
-  OneCardDisp createState() => new OneCardDisp();
+  OneCardDisp createState() => OneCardDisp();
 }
 
 class OneCardDisp extends State<OneCard> {
