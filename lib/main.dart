@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/disp_card_1.dart';
-import 'package:flutter_application_1/disp_card_10.dart';
-import 'package:flutter_application_1/disp_card_2.dart';
-import 'package:flutter_application_1/disp_card_3.dart';
-import 'package:flutter_application_1/disp_card_4.dart';
-import 'package:flutter_application_1/disp_card_5.dart';
-import 'package:flutter_application_1/disp_card_6.dart';
-import 'package:flutter_application_1/disp_card_8.dart';
-import 'package:flutter_application_1/disp_card_9.dart';
-
 import 'package:firebase_core/firebase_core.dart';
+import 'disp_card_1.dart';
+import 'disp_card_10.dart';
+import 'disp_card_2.dart';
+import 'disp_card_3.dart';
+import 'disp_card_4.dart';
+import 'disp_card_5.dart';
+import 'disp_card_6.dart';
+import 'disp_card_8.dart';
+import 'disp_card_9.dart';
+import 'disp_cards.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -20,13 +20,16 @@ void main() async {
   runApp(const MyApp());
 }
 
+// ignore: prefer_typing_uninitialized_variables
+var numberOfCards = 0;
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cotoba System(仮)',
+      //  title: 'Cotoba System(仮)',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: "UDGothic", // ここを追加
@@ -51,7 +54,7 @@ enum RadioCard { one, two, three, four, five, six, eight, nine, ten }
 
 enum OnseiTag { nashi, ari }
 
-var pic_animal_level1 = [
+List<String> picAnimalLevel1 = [
   'images/animal1_1.png',
   'images/animal1_2.png',
   'images/animal1_3.png',
@@ -63,7 +66,7 @@ var pic_animal_level1 = [
   'images/animal1_9.png',
   'images/animal1_10.png',
 ];
-var pic_goods_level1 = [
+List<String> picGoodsLevel1 = [
   'images/goods1_1.png',
   'images/goods1_2.png',
   'images/goods1_3.png',
@@ -75,7 +78,7 @@ var pic_goods_level1 = [
   'images/goods1_9.png',
   'images/goods1_10.png',
 ];
-var pic_food_level1 = [
+List<String> picFoodLevel1 = [
   'images/food1_1.png',
   'images/food1_2.png',
   'images/food1_3.png',
@@ -87,7 +90,7 @@ var pic_food_level1 = [
   'images/food1_9.png',
   'images/food1_10.png',
 ];
-var pic_hito_level1 = [
+List<String> picHitoLevel1 = [
   'images/hito1_1.png',
   'images/hito1_2.png',
   'images/hito1_3.png',
@@ -99,7 +102,7 @@ var pic_hito_level1 = [
   'images/hito1_9.png',
   'images/hito1_10.png',
 ];
-var pic_norimono_level1 = [
+List<String> picNorimonoLevel1 = [
   'images/norimono1_1.png',
   'images/norimono1_2.png',
   'images/norimono1_3.png',
@@ -111,7 +114,7 @@ var pic_norimono_level1 = [
   'images/norimono1_9.png',
   'images/norimono1_10.png',
 ];
-var pic_animal_level2 = [
+List<String> picAnimalLevel2 = [
   'images/animal2_1.png',
   'images/animal2_2.png',
   'images/animal2_3.png',
@@ -123,7 +126,7 @@ var pic_animal_level2 = [
   'images/animal2_9.png',
   'images/animal2_10.png',
 ];
-var pic_goods_level2 = [
+List<String> picGoodsLevel2 = [
   'images/goods2_1.png',
   'images/goods2_2.png',
   'images/goods2_3.png',
@@ -135,7 +138,7 @@ var pic_goods_level2 = [
   'images/goods2_9.png',
   'images/goods2_10.png',
 ];
-var pic_food_level2 = [
+List<String> picFoodLevel2 = [
   'images/food2_1.png',
   'images/food2_2.png',
   'images/food2_3.png',
@@ -147,7 +150,7 @@ var pic_food_level2 = [
   'images/food2_9.png',
   'images/food2_10.png',
 ];
-var pic_hito_level2 = [
+List<String> picHitoLevel2 = [
   'images/hito2_1.png',
   'images/hito2_2.png',
   'images/hito2_3.png',
@@ -159,7 +162,7 @@ var pic_hito_level2 = [
   'images/hito2_9.png',
   'images/hito2_10.png',
 ];
-var pic_norimono_level2 = [
+List<String> picNorimonoLevel2 = [
   'images/norimono2_1.png',
   'images/norimono2_2.png',
   'images/norimono2_3.png',
@@ -172,7 +175,7 @@ var pic_norimono_level2 = [
   'images/norimono2_10.png',
 ];
 
-var sound_animal_level1 = [
+List<String> soundAnimalLevel1 = [
   'sound/animal1_1.wav',
   'sound/animal1_2.wav',
   'sound/animal1_3.wav',
@@ -184,7 +187,7 @@ var sound_animal_level1 = [
   'sound/animal1_9.wav',
   'sound/animal1_10.wav',
 ];
-var sound_goods_level1 = [
+List<String> soundGoodsLevel1 = [
   'sound/goods1_1.wav',
   'sound/goods1_2.wav',
   'sound/goods1_3.wav',
@@ -196,7 +199,7 @@ var sound_goods_level1 = [
   'sound/goods1_9.wav',
   'sound/goods1_10.wav',
 ];
-var sound_food_level1 = [
+List<String> soundFoodLevel1 = [
   'sound/food1_1.wav',
   'sound/food1_2.wav',
   'sound/food1_3.wav',
@@ -208,7 +211,7 @@ var sound_food_level1 = [
   'sound/food1_9.wav',
   'sound/food1_10.wav',
 ];
-var sound_hito_level1 = [
+List<String> soundHitoLevel1 = [
   'sound/hito1_1.wav',
   'sound/hito1_2.wav',
   'sound/hito1_3.wav',
@@ -220,7 +223,7 @@ var sound_hito_level1 = [
   'sound/hito1_9.wav',
   'sound/hito1_10.wav',
 ];
-var sound_norimono_level1 = [
+List<String> soundNorimonoLevel1 = [
   'sound/norimono1_1.wav',
   'sound/norimono1_2.wav',
   'sound/norimono1_3.wav',
@@ -232,7 +235,7 @@ var sound_norimono_level1 = [
   'sound/norimono1_9.wav',
   'sound/norimono1_10.wav',
 ];
-var animal_level2 = [
+List<String> soundAnimalLevel2 = [
   'sound/animal2_1.wav',
   'sound/animal2_2.wav',
   'sound/animal2_3.wav',
@@ -244,7 +247,7 @@ var animal_level2 = [
   'sound/animal2_9.wav',
   'sound/animal2_10.wav',
 ];
-var goods_level2 = [
+List<String> soundGoodsLevel2 = [
   'sound/goods2_1.wav',
   'sound/goods2_2.wav',
   'sound/goods2_3.wav',
@@ -256,7 +259,7 @@ var goods_level2 = [
   'sound/goods2_9.wav',
   'sound/goods2_10.wav',
 ];
-var food_level2 = [
+List<String> soundFoodLevel2 = [
   'sound/food2_1.wav',
   'sound/food2_2.wav',
   'sound/food2_3.wav',
@@ -268,7 +271,7 @@ var food_level2 = [
   'sound/food2_9.wav',
   'sound/food2_10.wav',
 ];
-var hito_level2 = [
+List<String> soundHitoLevel2 = [
   'sound/hito2_1.wav',
   'sound/hito2_2.wav',
   'sound/hito2_3.wav',
@@ -280,7 +283,7 @@ var hito_level2 = [
   'sound/hito2_9.wav',
   'sound/hito2_10.wav',
 ];
-var norimono_level2 = [
+var soundNorimonoLevel2 = [
   'sound/norimono2_1.wav',
   'sound/norimono2_2.wav',
   'sound/norimono2_3.wav',
@@ -293,19 +296,18 @@ var norimono_level2 = [
   'sound/norimono2_10.wav',
 ];
 
-//var disp_pics = [];
 List<String> disp_pics = [];
-var picWidth;
-var picHeight;
-var maxCardNum;
+dynamic picWidth;
+dynamic picHeight;
+dynamic maxCardNum;
 OnseiTag? onseiFlag = OnseiTag.nashi;
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _isCheck_food = true;
-  var _isCheck_animal = true;
-  var _isCheck_norimono = true;
-  var _isCheck_hito = true;
-  var _isCheck_goods = true;
+  bool isCheckFood = true;
+  bool isCheckAnimal = true;
+  bool isCheckNorimono = true;
+  bool isCheckHito = true;
+  bool isCheckGoods = true;
 
   RadioLevel? _levelValue = RadioLevel.level1;
   RadioCard? _cardValue = RadioCard.one;
@@ -314,20 +316,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double deviceHeight = MediaQuery.of(context).size.height;
-    var _dispFontSize = deviceHeight / 45;
+    var dispFontSize = deviceHeight / 45;
 
-    final _dispMenuHeight = deviceHeight / 20;
-    final _dispGoiWidth = deviceWidth / 5.5;
-    final _dispGoiHeight = deviceHeight / 4;
-    final _dispCategoryWidth = deviceWidth / 5.5;
-    final _dispCategoryHeight = deviceHeight / 2;
-    final _dispCardWidth = deviceWidth / 5.5;
-    final _dispCardHeight = deviceHeight / 1.5;
-    final _dispOnseiWidth = deviceWidth / 5.5;
-    final _dispOnseiHeight = deviceHeight / 4;
+    final dispGoiWidth = deviceWidth / 5.5;
+    final dispGoiHeight = deviceHeight / 4;
+    final dispCategoryWidth = deviceWidth / 5.5;
+    final dispCategoryHeight = deviceHeight / 2;
+    final dispCardWidth = deviceWidth / 5.5;
+    final dispCardHeight = deviceHeight / 1.5;
+    final dispOnseiWidth = deviceWidth / 5.5;
+    final dispOnseiHeight = deviceHeight / 4;
 
     if (deviceWidth < 400) {
-      _dispFontSize = deviceHeight / (35 * deviceWidth / 400);
+      dispFontSize = deviceHeight / (35 * deviceWidth / 400);
     }
 
     return Scaffold(
@@ -344,8 +345,8 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
-                  width: _dispGoiWidth, //横幅
-                  height: _dispGoiHeight, //高さ
+                  width: dispGoiWidth, //横幅
+                  height: dispGoiHeight, //高さ
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -353,7 +354,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         '語彙獲得レベル',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: _dispFontSize,
+                          fontSize: dispFontSize,
                           color: Theme.of(context).primaryColor,
                         ),
                       ),
@@ -362,7 +363,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '語彙レベル１',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -379,7 +380,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '語彙レベル２',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -395,8 +396,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(
-                  width: _dispCategoryWidth, //横幅
-                  height: _dispCategoryHeight, //高さ
+                  width: dispCategoryWidth, //横幅
+                  height: dispCategoryHeight, //高さ
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -404,7 +405,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'カテゴリー選択', //textAlign: TextAlign.left,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: _dispFontSize,
+                          fontSize: dispFontSize,
                           color: Theme.of(context).primaryColor,
                         ),
                       ),
@@ -413,14 +414,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           "食べ物",
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
-                        value: _isCheck_food,
+                        value: isCheckFood,
                         onChanged: (bool? value) {
                           setState(() {
-                            _isCheck_food = value!;
+                            isCheckFood = value!;
                           });
                         },
                         controlAffinity: ListTileControlAffinity.leading,
@@ -430,14 +431,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           "動物",
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
-                        value: _isCheck_animal,
+                        value: isCheckAnimal,
                         onChanged: (bool? value) {
                           setState(() {
-                            _isCheck_animal = value!;
+                            isCheckAnimal = value!;
                           });
                         },
                         controlAffinity: ListTileControlAffinity.leading,
@@ -447,14 +448,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           "乗り物",
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
-                        value: _isCheck_norimono,
+                        value: isCheckNorimono,
                         onChanged: (bool? value) {
                           setState(() {
-                            _isCheck_norimono = value!;
+                            isCheckNorimono = value!;
                           });
                         },
                         controlAffinity: ListTileControlAffinity.leading,
@@ -464,14 +465,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           "物品",
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
-                        value: _isCheck_goods,
+                        value: isCheckGoods,
                         onChanged: (bool? value) {
                           setState(() {
-                            _isCheck_goods = value!;
+                            isCheckGoods = value!;
                           });
                         },
                         controlAffinity: ListTileControlAffinity.leading,
@@ -481,14 +482,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           "ひと",
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
-                        value: _isCheck_hito,
+                        value: isCheckHito,
                         onChanged: (bool? value) {
                           setState(() {
-                            _isCheck_hito = value!;
+                            isCheckHito = value!;
                           });
                         },
                         controlAffinity: ListTileControlAffinity.leading,
@@ -497,8 +498,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(
-                  width: _dispCardWidth, //横幅
-                  height: _dispCardHeight, //高さ
+                  width: dispCardWidth, //横幅
+                  height: dispCardHeight, //高さ
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -506,7 +507,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'カード配列選択',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: _dispFontSize,
+                          fontSize: dispFontSize,
                           color: Theme.of(context).primaryColor,
                         ),
                       ),
@@ -515,7 +516,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '１枚（1×1）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -532,7 +533,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '２枚（1×2）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -549,7 +550,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '３枚（1×3）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -566,7 +567,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '４枚（2×2）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -583,7 +584,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '５枚（1×5）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -600,7 +601,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '６枚（2×3）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -617,7 +618,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '８枚（2×4）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -634,7 +635,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '９枚（3×3）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -651,7 +652,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '10枚（2×5）',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -667,8 +668,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(
-                  width: _dispOnseiWidth, //横幅
-                  height: _dispOnseiHeight, //高さ
+                  width: dispOnseiWidth, //横幅
+                  height: dispOnseiHeight, //高さ
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -676,7 +677,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         '音声出力',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: _dispFontSize,
+                          fontSize: dispFontSize,
                           color: Theme.of(context).primaryColor,
                         ),
                       ),
@@ -685,7 +686,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '音声なし',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -702,7 +703,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           '音声あり',
                           style: TextStyle(
                             //fontWeight: FontWeight.bold,
-                            fontSize: _dispFontSize,
+                            fontSize: dispFontSize,
                             color: Colors.black,
                           ),
                         ),
@@ -721,11 +722,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.blue,
                 minimumSize: Size(300, 60),
-                primary: Colors.blue,
-                onPrimary: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Text(
+                'カード表示',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: dispFontSize,
+                  color: Colors.white,
                 ),
               ),
               onPressed: () {
@@ -733,51 +742,109 @@ class _MyHomePageState extends State<MyHomePage> {
                 maxCardNum = 0;
                 switch (_levelValue) {
                   case RadioLevel.level1:
-                    if (_isCheck_food == true) {
-                      disp_pics = disp_pics + pic_food_level1;
+                    if (isCheckFood == true) {
+                      disp_pics = disp_pics + picFoodLevel1;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_animal == true) {
-                      disp_pics = disp_pics + pic_animal_level1;
+                    if (isCheckAnimal == true) {
+                      disp_pics = disp_pics + picAnimalLevel1;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_norimono == true) {
-                      disp_pics = disp_pics + pic_norimono_level1;
+                    if (isCheckNorimono == true) {
+                      disp_pics = disp_pics + picNorimonoLevel1;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_hito == true) {
-                      disp_pics = disp_pics + pic_hito_level1;
+                    if (isCheckHito == true) {
+                      disp_pics = disp_pics + picHitoLevel1;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_goods == true) {
-                      disp_pics = disp_pics + pic_goods_level1;
+                    if (isCheckGoods == true) {
+                      disp_pics = disp_pics + picGoodsLevel1;
                       maxCardNum += 10;
                     }
                     break;
                   case RadioLevel.level2:
-                    if (_isCheck_food == true) {
-                      disp_pics = disp_pics + pic_food_level2;
+                    if (isCheckFood == true) {
+                      disp_pics = disp_pics + picFoodLevel2;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_animal == true) {
-                      disp_pics = disp_pics + pic_animal_level2;
+                    if (isCheckAnimal == true) {
+                      disp_pics = disp_pics + picAnimalLevel2;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_norimono == true) {
-                      disp_pics = disp_pics + pic_norimono_level2;
+                    if (isCheckNorimono == true) {
+                      disp_pics = disp_pics + picNorimonoLevel2;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_hito == true) {
-                      disp_pics = disp_pics + pic_hito_level2;
+                    if (isCheckHito == true) {
+                      disp_pics = disp_pics + picHitoLevel2;
                       maxCardNum += 10;
                     }
-                    if (_isCheck_goods == true) {
-                      disp_pics = disp_pics + pic_goods_level2;
+                    if (isCheckGoods == true) {
+                      disp_pics = disp_pics + picGoodsLevel2;
                       maxCardNum += 10;
                     }
                     break;
+                  default:
+                    break;
                 }
                 disp_pics.shuffle();
+
+                switch (_cardValue) {
+                  case RadioCard.one:
+                    picWidth = deviceWidth * 0.7;
+                    picHeight = deviceHeight * 0.7;
+                    numberOfCards = 1;
+                    break;
+                  case RadioCard.two:
+                    picWidth = deviceWidth * 0.7 / 2;
+                    picHeight = deviceHeight * 0.7;
+                    numberOfCards = 2;
+                    break;
+                  case RadioCard.three:
+                    picWidth = deviceWidth * 0.7 / 3;
+                    picHeight = deviceHeight * 0.7;
+                    numberOfCards = 3;
+                    break;
+                  case RadioCard.four:
+                    picWidth = deviceWidth * 0.7 / 2;
+                    picHeight = deviceHeight * 0.7 / 2;
+                    numberOfCards = 4;
+                    break;
+                  case RadioCard.five:
+                    picWidth = deviceWidth * 0.7 / 5;
+                    picHeight = deviceHeight * 0.7;
+                    numberOfCards = 5;
+                    break;
+                  case RadioCard.six:
+                    picWidth = deviceWidth * 0.7 / 3;
+                    picHeight = deviceHeight * 0.7 / 2;
+                    numberOfCards = 6;
+                    break;
+                  case RadioCard.eight:
+                    picWidth = deviceWidth * 0.75 / 4;
+                    picHeight = deviceHeight * 0.75 / 2;
+                    numberOfCards = 8;
+                    break;
+                  case RadioCard.nine:
+                    picWidth = deviceWidth * 0.75 / 3;
+                    picHeight = deviceHeight * 0.75 / 3;
+                    numberOfCards = 9;
+                    break;
+                  case RadioCard.ten:
+                    picWidth = deviceWidth * 0.75 / 5;
+                    picHeight = deviceHeight * 0.75 / 2;
+                    numberOfCards = 10;
+                    break;
+                  default:
+                    break;
+                }
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DispCards(),
+                    ));
+/*
                 switch (_cardValue) {
                   case RadioCard.one:
                     picWidth = deviceWidth * 0.7;
@@ -860,16 +927,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => TenCard(),
                         ));
                     break;
-                }
+                  default:
+                    break;
+                }*/
               },
-              child: Text(
-                'カード表示',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: _dispFontSize,
-                  color: Colors.white,
-                ),
-              ),
             ),
           ],
         ),
