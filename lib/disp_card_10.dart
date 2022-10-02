@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/main_back.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
+
+import 'main.dart';
 
 class TenCard extends StatefulWidget {
   @override

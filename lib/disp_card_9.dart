@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/main_back.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
+
+import 'main.dart';
 
 class NineCard extends StatefulWidget {
   @override
@@ -59,7 +61,7 @@ class NineCardDisp extends State<NineCard> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        cardSound = disp_pics[_index];
+                        cardSound = dispPics[_index];
                         cardSound = cardSound.replaceFirst('images', 'sounds');
                         cardSound = cardSound.replaceFirst('png', 'wav');
                         await _playSoundFile();
@@ -67,12 +69,12 @@ class NineCardDisp extends State<NineCard> {
                       child: Container(
                         width: picWidth,
                         height: picHeight,
-                        child: Image.asset(disp_pics[_index]),
+                        child: Image.asset(dispPics[_index]),
                       ),
                     ),
                     InkWell(
                       onTap: () async {
-                        cardSound = disp_pics[_index + 1];
+                        cardSound = dispPics[_index + 1];
                         cardSound = cardSound.replaceFirst('images', 'sounds');
                         cardSound = cardSound.replaceFirst('png', 'wav');
                         await _playSoundFile();
@@ -80,12 +82,12 @@ class NineCardDisp extends State<NineCard> {
                       child: Container(
                         width: picWidth,
                         height: picHeight,
-                        child: Image.asset(disp_pics[_index + 1]),
+                        child: Image.asset(dispPics[_index + 1]),
                       ),
                     ),
                     InkWell(
                       onTap: () async {
-                        cardSound = disp_pics[_index + 2];
+                        cardSound = dispPics[_index + 2];
                         cardSound = cardSound.replaceFirst('images', 'sounds');
                         cardSound = cardSound.replaceFirst('png', 'wav');
                         await _playSoundFile();
@@ -93,52 +95,7 @@ class NineCardDisp extends State<NineCard> {
                       child: Container(
                         width: picWidth,
                         height: picHeight,
-                        child: Image.asset(disp_pics[_index + 2]),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        cardSound = disp_pics[_index + 3];
-                        cardSound = cardSound.replaceFirst('images', 'sounds');
-                        cardSound = cardSound.replaceFirst('png', 'wav');
-                        await _playSoundFile();
-                      },
-                      child: Container(
-                        width: picWidth,
-                        height: picHeight,
-                        child: Image.asset(disp_pics[_index + 3]),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        cardSound = disp_pics[_index + 4];
-                        cardSound = cardSound.replaceFirst('images', 'sounds');
-                        cardSound = cardSound.replaceFirst('png', 'wav');
-                        await _playSoundFile();
-                      },
-                      child: Container(
-                        width: picWidth,
-                        height: picHeight,
-                        child: Image.asset(disp_pics[_index + 4]),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        cardSound = disp_pics[_index + 5];
-                        cardSound = cardSound.replaceFirst('images', 'sounds');
-                        cardSound = cardSound.replaceFirst('png', 'wav');
-                        await _playSoundFile();
-                      },
-                      child: Container(
-                        width: picWidth,
-                        height: picHeight,
-                        child: Image.asset(disp_pics[_index + 5]),
+                        child: Image.asset(dispPics[_index + 2]),
                       ),
                     ),
                   ],
@@ -149,7 +106,7 @@ class NineCardDisp extends State<NineCard> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        cardSound = disp_pics[_index + 6];
+                        cardSound = dispPics[_index + 3];
                         cardSound = cardSound.replaceFirst('images', 'sounds');
                         cardSound = cardSound.replaceFirst('png', 'wav');
                         await _playSoundFile();
@@ -157,12 +114,12 @@ class NineCardDisp extends State<NineCard> {
                       child: Container(
                         width: picWidth,
                         height: picHeight,
-                        child: Image.asset(disp_pics[_index + 6]),
+                        child: Image.asset(dispPics[_index + 3]),
                       ),
                     ),
                     InkWell(
                       onTap: () async {
-                        cardSound = disp_pics[_index + 7];
+                        cardSound = dispPics[_index + 4];
                         cardSound = cardSound.replaceFirst('images', 'sounds');
                         cardSound = cardSound.replaceFirst('png', 'wav');
                         await _playSoundFile();
@@ -170,12 +127,12 @@ class NineCardDisp extends State<NineCard> {
                       child: Container(
                         width: picWidth,
                         height: picHeight,
-                        child: Image.asset(disp_pics[_index + 7]),
+                        child: Image.asset(dispPics[_index + 4]),
                       ),
                     ),
                     InkWell(
                       onTap: () async {
-                        cardSound = disp_pics[_index + 8];
+                        cardSound = dispPics[_index + 5];
                         cardSound = cardSound.replaceFirst('images', 'sounds');
                         cardSound = cardSound.replaceFirst('png', 'wav');
                         await _playSoundFile();
@@ -183,7 +140,52 @@ class NineCardDisp extends State<NineCard> {
                       child: Container(
                         width: picWidth,
                         height: picHeight,
-                        child: Image.asset(disp_pics[_index + 8]),
+                        child: Image.asset(dispPics[_index + 5]),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        cardSound = dispPics[_index + 6];
+                        cardSound = cardSound.replaceFirst('images', 'sounds');
+                        cardSound = cardSound.replaceFirst('png', 'wav');
+                        await _playSoundFile();
+                      },
+                      child: Container(
+                        width: picWidth,
+                        height: picHeight,
+                        child: Image.asset(dispPics[_index + 6]),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        cardSound = dispPics[_index + 7];
+                        cardSound = cardSound.replaceFirst('images', 'sounds');
+                        cardSound = cardSound.replaceFirst('png', 'wav');
+                        await _playSoundFile();
+                      },
+                      child: Container(
+                        width: picWidth,
+                        height: picHeight,
+                        child: Image.asset(dispPics[_index + 7]),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        cardSound = dispPics[_index + 8];
+                        cardSound = cardSound.replaceFirst('images', 'sounds');
+                        cardSound = cardSound.replaceFirst('png', 'wav');
+                        await _playSoundFile();
+                      },
+                      child: Container(
+                        width: picWidth,
+                        height: picHeight,
+                        child: Image.asset(dispPics[_index + 8]),
                       ),
                     ),
                   ],
